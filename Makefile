@@ -1,10 +1,10 @@
-PROJECT_NAME := Pulumi Xyz Resource Provider
+PROJECT_NAME := Pulumi kafkaconnect Resource Provider
 
-PACK             := xyz
+PACK             := kafkaconnect
 PACKDIR          := sdk
-PROJECT          := github.com/pulumi/pulumi-xyz
-NODE_MODULE_NAME := @abc/xyz
-NUGET_PKG_NAME   := Abc.Xyz
+PROJECT          := github.com/azaurus1/pulumi-kafka-connect
+NODE_MODULE_NAME := @azaurus1/kafkaconnect
+NUGET_PKG_NAME   := azaurus1.kafkaconnect
 
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         ?= $(shell pulumictl get version)

@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/provider
+module github.com/azaurus1/pulumi-kafka-connect/provider
 
 go 1.22
 

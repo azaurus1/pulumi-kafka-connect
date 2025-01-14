@@ -1,6 +1,6 @@
-name: provider-xyz-native
+name: provider-kafkaconnect-native
 runtime: python
 plugins:
   providers:
-    - name: xyz
+    - name: kafkaconnect
       path: ../../bin

@@ -1,17 +1,17 @@
-name: provider-xyz-native
+name: provider-kafkaconnect-native
 runtime: yaml
 plugins:
   providers:
-    - name: xyz
+    - name: kafkaconnect
       path: ../../bin
 
 resources:
   myRandomResource:
-    type: xyz:Random
+    type: kafkaconnect:Random
     properties:
       length: 24
   myRandomComponent:
-    type: xyz:RandomComponent
+    type: kafkaconnect:RandomComponent
     properties:
       length: 24
 

@@ -1,6 +1,6 @@
-name: provider-xyz-native
+name: provider-kafkaconnect-native
 runtime: go
 plugins:
   providers:
-    - name: xyz
+    - name: kafkaconnect
       path: ../../bin

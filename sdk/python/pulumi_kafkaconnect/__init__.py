@@ -11,21 +11,21 @@ from .random_component import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_xyz.config as __config
+    import pulumi_kafkaconnect.config as __config
     config = __config
 else:
-    config = _utilities.lazy_import('pulumi_xyz.config')
+    config = _utilities.lazy_import('pulumi_kafkaconnect.config')
 
 _utilities.register(
     resource_modules="""
 [
  {
-  "pkg": "xyz",
+  "pkg": "kafkaconnect",
   "mod": "index",
-  "fqn": "pulumi_xyz",
+  "fqn": "pulumi_kafkaconnect",
   "classes": {
-   "xyz:index:Random": "Random",
-   "xyz:index:RandomComponent": "RandomComponent"
+   "kafkaconnect:index:Random": "Random",
+   "kafkaconnect:index:RandomComponent": "RandomComponent"
   }
  }
 ]
@@ -33,9 +33,9 @@ _utilities.register(
     resource_packages="""
 [
  {
-  "pkg": "xyz",
-  "token": "pulumi:providers:xyz",
-  "fqn": "pulumi_xyz",
+  "pkg": "kafkaconnect",
+  "token": "pulumi:providers:kafkaconnect",
+  "fqn": "pulumi_kafkaconnect",
   "class": "Provider"
  }
 ]
