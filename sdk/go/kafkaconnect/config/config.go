@@ -4,13 +4,14 @@
 package config
 
 import (
-	"example.com/pulumi-kafkaconnect/sdk/go/kafkaconnect/internal"
+	"github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 var _ = internal.GetEnvOrDefault
 
-func GetItsasecret(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "kafkaconnect:itsasecret")
+// The url for the kafka connect cluster
+func GetUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafkaconnect:url")
 }

@@ -15,8 +15,11 @@
 package provider
 
 import (
+	"github.com/azaurus1/pulumi-kafka-connect/provider/pkg/kafkaconnect/config"
+	"github.com/azaurus1/pulumi-kafka-connect/provider/pkg/kafkaconnect/connector"
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
+	"github.com/pulumi/pulumi-go-provider/middleware/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
@@ -30,19 +33,22 @@ func Provider() p.Provider {
 	// In this case, a single resource and component
 	return infer.Provider(infer.Options{
 		Resources: []infer.InferredResource{
-			infer.Resource[Random, RandomArgs, RandomState](),
+			infer.Resource[*connector.Connector, connector.ConnectorArgs, connector.ConnectorState](),
 		},
-		Components: []infer.InferredComponent{
-			infer.Component[*RandomComponent, RandomComponentArgs, *RandomComponentState](),
-		},
-		Config: infer.Config[Config](),
+		Components: []infer.InferredComponent{},
+		Config:     infer.Config[*config.KafkaConnectConfig](),
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"provider": "index",
 		},
+		Metadata: schema.Metadata{
+			DisplayName: "Kafka Connect",
+			Description: "A Pulumi native provider for Kafka Connect",
+			Keywords: []string{
+				"kafka",
+				"kafkaconnect",
+				"connect",
+				"catergory/data",
+			},
+		},
 	})
-}
-
-// Define some provider-level configuration
-type Config struct {
-	Scream *bool `pulumi:"itsasecret,optional"`
 }

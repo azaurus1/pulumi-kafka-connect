@@ -16,6 +16,9 @@ __config__ = pulumi.Config('kafkaconnect')
 
 class _ExportableConfig(types.ModuleType):
     @property
-    def itsasecret(self) -> Optional[bool]:
-        return __config__.get_bool('itsasecret')
+    def url(self) -> Optional[str]:
+        """
+        The url for the kafka connect cluster
+        """
+        return __config__.get('url')
 

@@ -1,2 +1,2 @@
-// Package kafkaconnect exports types, functions, subpackages for provisioning kafkaconnect resources.
+// A Pulumi native provider for Kafka Connect
 package kafkaconnect

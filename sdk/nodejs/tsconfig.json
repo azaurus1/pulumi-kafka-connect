@@ -15,10 +15,10 @@
     "files": [
         "config/index.ts",
         "config/vars.ts",
+        "connector/connector.ts",
+        "connector/index.ts",
         "index.ts",
         "provider.ts",
-        "random.ts",
-        "randomComponent.ts",
         "utilities.ts"
     ]
 }

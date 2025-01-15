@@ -32,11 +32,14 @@ namespace Pulumi.Kafkaconnect
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("kafkaconnect");
 
-        private static readonly __Value<bool?> _itsasecret = new __Value<bool?>(() => __config.GetBoolean("itsasecret"));
-        public static bool? Itsasecret
+        private static readonly __Value<string?> _url = new __Value<string?>(() => __config.Get("url"));
+        /// <summary>
+        /// The url for the kafka connect cluster
+        /// </summary>
+        public static string? Url
         {
-            get => _itsasecret.Get();
-            set => _itsasecret.Set(value);
+            get => _url.Get();
+            set => _url.Set(value);
         }
 
     }

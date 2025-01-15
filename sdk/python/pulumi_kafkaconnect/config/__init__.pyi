@@ -9,5 +9,8 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-itsasecret: Optional[bool]
+url: Optional[str]
+"""
+The url for the kafka connect cluster
+"""
 

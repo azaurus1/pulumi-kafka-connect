@@ -7,10 +7,13 @@ import * as utilities from "../utilities";
 declare var exports: any;
 const __config = new pulumi.Config("kafkaconnect");
 
-export declare const itsasecret: boolean | undefined;
-Object.defineProperty(exports, "itsasecret", {
+/**
+ * The url for the kafka connect cluster
+ */
+export declare const url: string | undefined;
+Object.defineProperty(exports, "url", {
     get() {
-        return __config.getObject<boolean>("itsasecret");
+        return __config.get("url");
     },
     enumerable: true,
 });

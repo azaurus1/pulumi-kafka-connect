@@ -1,6 +1,12 @@
 {
     "name": "@pulumi/kafkaconnect",
     "version": "${VERSION}",
+    "keywords": [
+        "kafka",
+        "kafkaconnect",
+        "connect",
+        "catergory/data"
+    ],
     "scripts": {
         "build": "tsc"
     },

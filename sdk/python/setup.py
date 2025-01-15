@@ -20,8 +20,10 @@ def readme():
 setup(name='pulumi_kafkaconnect',
       python_requires='>=3.8',
       version=VERSION,
+      description="A Pulumi native provider for Kafka Connect",
       long_description=readme(),
       long_description_content_type='text/markdown',
+      keywords='kafka kafkaconnect connect catergory/data',
       packages=find_packages(),
       package_data={
           'pulumi_kafkaconnect': [

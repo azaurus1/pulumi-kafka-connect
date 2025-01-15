@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/sdk
+module github.com/azaurus1/pulumi-kafka-connect/sdk
 
 go 1.21
 

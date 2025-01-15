@@ -6,26 +6,26 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .provider import *
-from .random import *
-from .random_component import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
     import pulumi_kafkaconnect.config as __config
     config = __config
+    import pulumi_kafkaconnect.connector as __connector
+    connector = __connector
 else:
     config = _utilities.lazy_import('pulumi_kafkaconnect.config')
+    connector = _utilities.lazy_import('pulumi_kafkaconnect.connector')
 
 _utilities.register(
     resource_modules="""
 [
  {
   "pkg": "kafkaconnect",
-  "mod": "index",
-  "fqn": "pulumi_kafkaconnect",
+  "mod": "connector",
+  "fqn": "pulumi_kafkaconnect.connector",
   "classes": {
-   "kafkaconnect:index:Random": "Random",
-   "kafkaconnect:index:RandomComponent": "RandomComponent"
+   "kafkaconnect:connector:Connector": "Connector"
   }
  }
 ]
