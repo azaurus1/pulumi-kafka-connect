@@ -37,6 +37,10 @@ jobs:
         uses: ./.github/actions/setup-tools
         with:
           tools: go, pulumicli, pulumictl, nodejs, python, dotnet
+      - name: Start Docker Compose services
+        id: docker_compose
+        run: |
+          docker-compose up -d
       - name: Build
         id: build
         run: |
@@ -52,6 +56,10 @@ jobs:
       - name: PulumiDown
         id: down
         run: make down
+      - name: Stop Docker Compose services
+        id: docker_compose_down
+        run: |
+          docker-compose down
       - name: Generate multi-language examples from yaml IaC program
         id: examples
         run: |
