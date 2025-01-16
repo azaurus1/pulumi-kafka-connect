@@ -3,7 +3,7 @@ PROJECT_NAME := Pulumi kafkaconnect Resource Provider
 PACK             := kafkaconnect
 PACKDIR          := sdk
 PROJECT          := github.com/azaurus1/pulumi-kafka-connect
-NODE_MODULE_NAME := @azaurus1/kafkaconnect
+NODE_MODULE_NAME := @azaurus/kafkaconnect
 NUGET_PKG_NAME   := azaurus1.kafkaconnect
 
 PROVIDER        := pulumi-resource-${PACK}

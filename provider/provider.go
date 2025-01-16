@@ -47,7 +47,7 @@ func Provider() p.Provider {
 				"kafka",
 				"kafkaconnect",
 				"connect",
-				"catergory/data",
+				"category/cloud",
 			},
 		},
 	})

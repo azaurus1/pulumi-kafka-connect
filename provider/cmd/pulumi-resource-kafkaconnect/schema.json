@@ -1,0 +1,7 @@
+{
+  "diplayName": "Kafka Connect",
+  "description": "A Pulumi native provider for Kafka Connect",
+  "version": "v0.0.0",
+  "publisher": "azaurus1",
+  "kind": "native"
+}
