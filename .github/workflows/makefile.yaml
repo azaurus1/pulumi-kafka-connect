@@ -40,7 +40,7 @@ jobs:
       - name: Start Docker Compose services
         id: docker_compose
         run: |
-          docker-compose up -d
+          docker compose up -d
       - name: Build
         id: build
         run: |
@@ -57,7 +57,7 @@ jobs:
         id: down
         run: make down
       - name: Stop Docker Compose services
-        id: docker_compose_down
+        id: docker compose_down
         run: |
           docker-compose down
       - name: Generate multi-language examples from yaml IaC program
