@@ -52,11 +52,21 @@ jobs:
         with:
           args: -p 3 release --rm-dist
           version: latest
+      - name: Create tag
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # tag=v7.0.1
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/sdk/${{ github.ref_name }}',
+              sha: context.sha
+            })
     strategy:
       fail-fast: true
       matrix:
         goversion:
-          - 1.17.x
+          - 1.21.x
   publish_sdk:
     name: Publish SDKs
     runs-on: ubuntu-latest
