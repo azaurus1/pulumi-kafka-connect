@@ -58,16 +58,6 @@ jobs:
         with:
           args: -p 3 release --clean
           version: 2
-      - name: Create tag
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # tag=v7.0.1
-        with:
-          script: |
-            github.rest.git.createRef({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            ref: `refs/tags/sdk/v${github.ref_name}`,
-            sha: github.sha
-            });
     strategy:
       fail-fast: true
       matrix:
