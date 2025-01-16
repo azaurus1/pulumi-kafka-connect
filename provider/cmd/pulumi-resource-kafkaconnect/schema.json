@@ -3,5 +3,14 @@
   "description": "A Pulumi native provider for Kafka Connect",
   "version": "v0.0.0",
   "publisher": "azaurus1",
-  "kind": "native"
+  "license": "Apache-2.0",
+  "pluginDownloadURL": "github://api.github.com/azaurus1/pulumi-kafka-connect",
+  "repository": "https://github.com/azaurus1/pulumi-kafka-connect",
+  "keywords": [
+    "pulumi",
+    "kafka",
+    "kafkaconnect",
+    "category/utility",
+    "kind/native"
+  ]
 }
