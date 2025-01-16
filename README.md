@@ -1,12 +1,18 @@
-# Pulumi Native Provider Boilerplate
+# Pulumi Native Provider for Kafka Connect
+A Pulumi Provider for Kafka Connect, allows for:
 
-This repository is a boilerplate showing how to create and locally test a native Pulumi provider (with examples of both CustomResource and ComponentResource [resource types](https://www.pulumi.com/docs/iac/concepts/resources/)). 
+- Creating a connector
+- Deleting a connector
+
+<!-- # Pulumi Native Provider Boilerplate
+
+This repository is a boilerplate showing how to create and locally test a native Pulumi provider (with examples of both CustomResource and ComponentResource [resource types](https://www.pulumi.com/docs/iac/concepts/resources/)).
 
 ## Authoring a Pulumi Native Provider
 
 This boilerplate creates a working Pulumi-owned provider named `kafkaconnect`.
 It implements a random number generator that you can [build and test out for yourself](#test-against-the-example) and then replace the Random code with code specific to your provider.
-
+-->
 
 ### Prerequisites
 
@@ -23,7 +29,7 @@ If you are not using VSCode, you will need to ensure the following tools are ins
 * [.NET](https://dotnet.microsoft.com/download)
 
 
-### Build & test the boilerplate XYZ provider
+### Build & test the provider
 
 1. Create a new Github CodeSpaces environment using this repository.
 1. Open a terminal in the CodeSpaces environment.
@@ -32,13 +38,13 @@ If you are not using VSCode, you will need to ensure the following tools are ins
 1. Run `make up` to run the example program in `examples/yaml`.
 1. Run `make down` to tear down the example program.
 
-### Creating a new provider repository
+<!-- ### Creating a new provider repository
 
 Pulumi offers this repository as a [GitHub template repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) for convenience.  From this repository:
 
 1. Click "Use this template".
 1. Set the following options:
-   * Owner: pulumi 
+   * Owner: pulumi
    * Repository name: pulumi-kafkaconnect-native (replace "kafkaconnect" with the name of your provider)
    * Description: Pulumi provider for kafkaconnect
    * Repository type: Public
@@ -64,7 +70,7 @@ From the templated repository:
    ```bash
    $ make build install
    ```
-   
+
 This will:
 
 1. Create the SDK codegen binary and place it in a `./bin` folder (gitignored)
@@ -73,7 +79,7 @@ This will:
 4. Install the provider on your machine.
 
 #### Test against the example
-   
+
 ```bash
 $ cd examples/simple
 $ yarn link @pulumi/kafkaconnect
@@ -82,7 +88,7 @@ $ pulumi stack init test
 $ pulumi up
 ```
 
-Now that you have completed all of the above steps, you have a working provider that generates a random string for you.
+Now that you have completed all of the above steps, you have a working provider that generates a random string for you. -->
 
 #### A brief repository overview
 
@@ -106,9 +112,9 @@ Create an example program using the resources defined in your provider, and plac
 
 You can now repeat the steps for [build, install, and test](#test-against-the-example).
 
-## Configuring CI and releases
+<!-- ## Configuring CI and releases
 
-1. Follow the instructions laid out in the [deployment templates](./deployment-templates/README-DEPLOYMENT.md).
+1. Follow the instructions laid out in the [deployment templates](./deployment-templates/README-DEPLOYMENT.md). -->
 
 ## References
 
