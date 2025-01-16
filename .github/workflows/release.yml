@@ -48,9 +48,9 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v3
+        uses: goreleaser/goreleaser-action@v2
         with:
-          args: -p 3 release --rm-dist
+          args: -p 3 release --clean
           version: latest
       - name: Create tag
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # tag=v7.0.1
