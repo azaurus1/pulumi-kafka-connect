@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker://ghcr.io/pulumi/devcontainer:latest
-      options: --user root
     permissions:
       contents: read
       packages: read
@@ -37,6 +36,12 @@ jobs:
         uses: ./.github/actions/setup-tools
         with:
           tools: go, pulumicli, pulumictl, nodejs, python, dotnet
+      - name: Check Docker Compose version
+        run: |
+          docker compose version || (apt-get update && apt-get install -y docker-compose-plugin)
+      - name: Start Docker Service
+        run: |
+          service docker start
       - name: Start Docker Compose services
         id: docker_compose
         run: |
