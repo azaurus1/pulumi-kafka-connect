@@ -1,8 +1,10 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as kafkaconnect from "@pulumi/kafkaconnect";
 
-const myRandomResource = new kafkaconnect.Random("myRandomResource", {length: 24});
-const myRandomComponent = new kafkaconnect.RandomComponent("myRandomComponent", {length: 24});
+const defaultProvider = new kafkaconnect.Provider("defaultProvider", {url: "http://localhost:8083"});
+const myConnector = new kafkaconnect.connector.Connector("myConnector", {}, {
+    provider: defaultProvider,
+});
 export const output = {
-    value: myRandomResource.result,
+    value: myConnector.result,
 };

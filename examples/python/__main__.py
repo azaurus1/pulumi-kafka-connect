@@ -1,8 +1,8 @@
 import pulumi
 import pulumi_kafkaconnect as kafkaconnect
 
-my_random_resource = kafkaconnect.Random("myRandomResource", length=24)
-my_random_component = kafkaconnect.RandomComponent("myRandomComponent", length=24)
+default_provider = kafkaconnect.Provider("defaultProvider", url="http://localhost:8083")
+my_connector = kafkaconnect.connector.Connector("myConnector", opts = pulumi.ResourceOptions(provider=default_provider))
 pulumi.export("output", {
-    "value": my_random_resource.result,
+    "value": my_connector.result,
 })

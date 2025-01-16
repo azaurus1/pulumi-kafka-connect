@@ -31,6 +31,8 @@ export class Connector extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connector.__pulumiType;
     }
 
+    public readonly config!: pulumi.Output<{[key: string]: any}>;
+    public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly result!: pulumi.Output<string>;
 
     /**
@@ -40,12 +42,22 @@ export class Connector extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ConnectorArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ConnectorArgs, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.config === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'config'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["result"] = undefined /*out*/;
         } else {
+            resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["result"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -57,4 +69,6 @@ export class Connector extends pulumi.CustomResource {
  * The set of arguments for constructing a Connector resource.
  */
 export interface ConnectorArgs {
+    config: pulumi.Input<{[key: string]: any}>;
+    name: pulumi.Input<string>;
 }

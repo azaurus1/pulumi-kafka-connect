@@ -5,21 +5,23 @@ using Kafkaconnect = Pulumi.Kafkaconnect;
 
 return await Deployment.RunAsync(() => 
 {
-    var myRandomResource = new Kafkaconnect.Random("myRandomResource", new()
+    var defaultProvider = new Kafkaconnect.Provider("defaultProvider", new()
     {
-        Length = 24,
+        Url = "http://localhost:8083",
     });
 
-    var myRandomComponent = new Kafkaconnect.RandomComponent("myRandomComponent", new()
+    var myConnector = new Kafkaconnect.Connector.Connector("myConnector", new()
     {
-        Length = 24,
+    }, new CustomResourceOptions
+    {
+        Provider = defaultProvider,
     });
 
     return new Dictionary<string, object?>
     {
         ["output"] = 
         {
-            { "value", myRandomResource.Result },
+            { "value", myConnector.Result },
         },
     };
 });

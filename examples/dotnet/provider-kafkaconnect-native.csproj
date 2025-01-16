@@ -7,7 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Pulumi" Version="3.*" />
-		<PackageReference Include="Pulumi.Kafkaconnect" Version="0.0.1-alpha.1736891569+49650d57.dirty" />
+		<PackageReference Include="Pulumi.Kafkaconnect" Version="0.0.1-alpha.1736981314+4daab1cf.dirty" />
 	</ItemGroup>
 
 </Project>

@@ -6,15 +6,24 @@ plugins:
       path: ../../bin
 
 resources:
-  myRandomResource:
-    type: kafkaconnect:Random
+  # Explicitly configure the default provider with the required 'url' property
+  defaultProvider:
+    type: pulumi:providers:kafkaconnect
     properties:
-      length: 24
-  myRandomComponent:
-    type: kafkaconnect:RandomComponent
+      url: "http://localhost:8083" # Replace with your actual Kafka Connect URL
+
+  myConnector:
+    type: kafkaconnect:connector:Connector
+    options:
+      provider: ${defaultProvider}
     properties:
-      length: 24
+      name: "mirror-heartbeat-connector-yxdw"
+      config:
+        connector.class: "org.apache.kafka.connect.mirror.MirrorHeartbeatConnector"
+        source.cluster.alias: "source"
+        heartbeats.topic.replication.factor: "-1"
+        name: "mirror-heartbeat-connector-yxdw"
 
 outputs:
   output:
-    value: ${myRandomResource.result}
+    value: ${myConnector.result}

@@ -12,6 +12,12 @@ namespace Pulumi.Kafkaconnect.Connector
     [KafkaconnectResourceType("kafkaconnect:connector:Connector")]
     public partial class Connector : global::Pulumi.CustomResource
     {
+        [Output("config")]
+        public Output<ImmutableDictionary<string, object>> Config { get; private set; } = null!;
+
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
         [Output("result")]
         public Output<string> Result { get; private set; } = null!;
 
@@ -23,7 +29,7 @@ namespace Pulumi.Kafkaconnect.Connector
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Connector(string name, ConnectorArgs? args = null, CustomResourceOptions? options = null)
+        public Connector(string name, ConnectorArgs args, CustomResourceOptions? options = null)
             : base("kafkaconnect:connector:Connector", name, args ?? new ConnectorArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -60,6 +66,17 @@ namespace Pulumi.Kafkaconnect.Connector
 
     public sealed class ConnectorArgs : global::Pulumi.ResourceArgs
     {
+        [Input("config", required: true)]
+        private InputMap<object>? _config;
+        public InputMap<object> Config
+        {
+            get => _config ?? (_config = new InputMap<object>());
+            set => _config = value;
+        }
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
         public ConnectorArgs()
         {
         }
