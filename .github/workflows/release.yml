@@ -48,7 +48,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@7ec5c2b0c6cdda6e8bbb49444bc797dd33d74dd8 # tag=v5.0.0
+        uses: goreleaser/goreleaser-action@v3
         with:
           args: -p 3 release --rm-dist
           version: latest
