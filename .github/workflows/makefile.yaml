@@ -57,9 +57,9 @@ jobs:
         id: down
         run: make down
       - name: Stop Docker Compose services
-        id: docker compose_down
+        id: docker_compose_down
         run: |
-          docker-compose down
+          docker compose down
       - name: Generate multi-language examples from yaml IaC program
         id: examples
         run: |
