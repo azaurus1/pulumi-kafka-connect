@@ -4,6 +4,8 @@ on:
     tags:
       - v*.*.*
       - "!v*.*.*-**"
+permissions:
+  contents: write
 env:
   PROVIDER: "kafka-connect"
   # THIS GITHUB_TOKEN IS A REQUIREMENT TO BE ABLE TO WRITE TO GH RELEASES
