@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker://ghcr.io/pulumi/devcontainer:latest
+      options: --user root
     permissions:
       contents: read
       packages: read
@@ -36,16 +37,6 @@ jobs:
         uses: ./.github/actions/setup-tools
         with:
           tools: go, pulumicli, pulumictl, nodejs, python, dotnet
-      - name: Check Docker Compose version
-        run: |
-          docker compose version || (apt-get update && apt-get install -y docker-compose-plugin)
-      - name: Start Docker Service
-        run: |
-          service docker start
-      - name: Start Docker Compose services
-        id: docker_compose
-        run: |
-          docker compose up -d
       - name: Build
         id: build
         run: |
@@ -61,10 +52,6 @@ jobs:
       - name: PulumiDown
         id: down
         run: make down
-      - name: Stop Docker Compose services
-        id: docker_compose_down
-        run: |
-          docker compose down
       - name: Generate multi-language examples from yaml IaC program
         id: examples
         run: |
