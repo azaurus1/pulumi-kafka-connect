@@ -23,7 +23,7 @@ setup(name='pulumi_kafkaconnect',
       description="A Pulumi native provider for Kafka Connect",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='kafka kafkaconnect connect catergory/data',
+      keywords='kafka kafkaconnect connect category/cloud',
       packages=find_packages(),
       package_data={
           'pulumi_kafkaconnect': [

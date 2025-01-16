@@ -32,6 +32,13 @@ namespace Pulumi.Kafkaconnect
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("kafkaconnect");
 
+        private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));
+        public static string? Password
+        {
+            get => _password.Get();
+            set => _password.Set(value);
+        }
+
         private static readonly __Value<string?> _url = new __Value<string?>(() => __config.Get("url"));
         /// <summary>
         /// The url for the kafka connect cluster
@@ -40,6 +47,13 @@ namespace Pulumi.Kafkaconnect
         {
             get => _url.Get();
             set => _url.Set(value);
+        }
+
+        private static readonly __Value<string?> _user = new __Value<string?>(() => __config.Get("user"));
+        public static string? User
+        {
+            get => _user.Get();
+            set => _user.Set(value);
         }
 
     }

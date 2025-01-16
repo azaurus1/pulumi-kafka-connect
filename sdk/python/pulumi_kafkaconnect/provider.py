@@ -14,12 +14,18 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 url: pulumi.Input[str]):
+                 url: pulumi.Input[str],
+                 password: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] url: The url for the kafka connect cluster
         """
         pulumi.set(__self__, "url", url)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
 
     @property
     @pulumi.getter
@@ -33,13 +39,33 @@ class ProviderArgs:
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
+
 
 class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a Kafkaconnect resource with the given unique name, props, and options.
@@ -70,7 +96,9 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -80,9 +108,13 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
+            __props__.__dict__["user"] = None if user is None else pulumi.Output.secret(user)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "user"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'kafkaconnect',
             resource_name,
@@ -91,9 +123,19 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
         The url for the kafka connect cluster
         """
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def user(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "user")
 

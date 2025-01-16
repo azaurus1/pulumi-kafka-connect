@@ -7,6 +7,14 @@ import * as utilities from "../utilities";
 declare var exports: any;
 const __config = new pulumi.Config("kafkaconnect");
 
+export declare const password: string | undefined;
+Object.defineProperty(exports, "password", {
+    get() {
+        return __config.get("password");
+    },
+    enumerable: true,
+});
+
 /**
  * The url for the kafka connect cluster
  */
@@ -14,6 +22,14 @@ export declare const url: string | undefined;
 Object.defineProperty(exports, "url", {
     get() {
         return __config.get("url");
+    },
+    enumerable: true,
+});
+
+export declare const user: string | undefined;
+Object.defineProperty(exports, "user", {
+    get() {
+        return __config.get("user");
     },
     enumerable: true,
 });

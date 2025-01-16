@@ -16,9 +16,17 @@ __config__ = pulumi.Config('kafkaconnect')
 
 class _ExportableConfig(types.ModuleType):
     @property
+    def password(self) -> Optional[str]:
+        return __config__.get('password')
+
+    @property
     def url(self) -> Optional[str]:
         """
         The url for the kafka connect cluster
         """
         return __config__.get('url')
+
+    @property
+    def user(self) -> Optional[str]:
+        return __config__.get('user')
 

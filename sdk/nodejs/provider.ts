@@ -19,10 +19,12 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * The url for the kafka connect cluster
      */
     public readonly url!: pulumi.Output<string>;
+    public readonly user!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -38,9 +40,13 @@ export class Provider extends pulumi.ProviderResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["user"] = args?.user ? pulumi.secret(args.user) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password", "user"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -49,8 +55,10 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    password?: pulumi.Input<string>;
     /**
      * The url for the kafka connect cluster
      */
     url: pulumi.Input<string>;
+    user?: pulumi.Input<string>;
 }

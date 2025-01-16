@@ -10,7 +10,9 @@ import (
 )
 
 type KafkaConnectConfig struct {
-	Url string `pulumi:"url"`
+	Url      string `pulumi:"url"`
+	User     string `pulumi:"user,optional" provider:"secret"`
+	Password string `pulumi:"password,optional" provider:"secret"`
 }
 
 func (c *KafkaConnectConfig) Annotate(a infer.Annotator) {
@@ -23,9 +25,22 @@ func (c *KafkaConnectConfig) Configure(ctx context.Context) error {
 		url, exists := os.LookupEnv("KAFKA_CONNECT_URL")
 		if exists {
 			c.Url = url
-			return nil
 		}
 		return fmt.Errorf("URL is required")
+	}
+
+	if c.User == "" {
+		user, exists := os.LookupEnv("KAFKA_CONNECT_USER")
+		if exists {
+			c.User = user
+		}
+	}
+
+	if c.Password == "" {
+		password, exists := os.LookupEnv("KAFKA_CONNECT_PASSWORD")
+		if exists {
+			c.Password = password
+		}
 	}
 	return nil
 }

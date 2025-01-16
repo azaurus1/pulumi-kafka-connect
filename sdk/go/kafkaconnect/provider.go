@@ -8,15 +8,17 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect/internal"
+	"example.com/pulumi-kafkaconnect/sdk/go/kafkaconnect/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 type Provider struct {
 	pulumi.ProviderResourceState
 
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The url for the kafka connect cluster
-	Url pulumi.StringOutput `pulumi:"url"`
+	Url  pulumi.StringOutput    `pulumi:"url"`
+	User pulumi.StringPtrOutput `pulumi:"user"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -29,6 +31,17 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	if args.User != nil {
+		args.User = pulumi.ToSecret(args.User).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+		"user",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:kafkaconnect", name, args, &resource, opts...)
@@ -39,14 +52,18 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	Password *string `pulumi:"password"`
 	// The url for the kafka connect cluster
-	Url string `pulumi:"url"`
+	Url  string  `pulumi:"url"`
+	User *string `pulumi:"user"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	Password pulumi.StringPtrInput
 	// The url for the kafka connect cluster
-	Url pulumi.StringInput
+	Url  pulumi.StringInput
+	User pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -86,9 +103,17 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+func (o ProviderOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
 // The url for the kafka connect cluster
 func (o ProviderOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o ProviderOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.User }).(pulumi.StringPtrOutput)
 }
 
 func init() {

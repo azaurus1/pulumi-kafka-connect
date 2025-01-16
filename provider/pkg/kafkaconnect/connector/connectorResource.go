@@ -37,6 +37,10 @@ func (*Connector) Create(ctx context.Context, name string, input ConnectorArgs, 
 		Config: input.Config,
 	}
 
+	if config.User != "" && config.Password != "" {
+		client.SetBasicAuth(config.User, config.Password)
+	}
+
 	resp, err := client.CreateConnector(request, false)
 	if err != nil {
 		return name, state, err
@@ -55,6 +59,10 @@ func (*Connector) Delete(ctx context.Context, name string, state ConnectorState)
 
 	request := connectors.ConnectorRequest{
 		Name: name,
+	}
+
+	if config.User != "" && config.Password != "" {
+		client.SetBasicAuth(config.User, config.Password)
 	}
 
 	resp, err := client.DeleteConnector(request, false)

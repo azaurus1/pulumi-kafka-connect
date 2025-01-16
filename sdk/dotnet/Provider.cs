@@ -12,11 +12,17 @@ namespace Pulumi.Kafkaconnect
     [KafkaconnectResourceType("pulumi:providers:kafkaconnect")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
+
         /// <summary>
         /// The url for the kafka connect cluster
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
+
+        [Output("user")]
+        public Output<string?> User { get; private set; } = null!;
 
 
         /// <summary>
@@ -36,6 +42,11 @@ namespace Pulumi.Kafkaconnect
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                    "user",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -46,11 +57,35 @@ namespace Pulumi.Kafkaconnect
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        [Input("password")]
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The url for the kafka connect cluster
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
+
+        [Input("user")]
+        private Input<string>? _user;
+        public Input<string>? User
+        {
+            get => _user;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _user = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProviderArgs()
         {

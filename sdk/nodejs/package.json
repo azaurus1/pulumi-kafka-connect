@@ -5,7 +5,7 @@
         "kafka",
         "kafkaconnect",
         "connect",
-        "catergory/data"
+        "category/cloud"
     ],
     "scripts": {
         "build": "tsc"
