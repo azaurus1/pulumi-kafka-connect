@@ -2,6 +2,7 @@ package connector
 
 import (
 	"context"
+	"log"
 
 	"github.com/azaurus1/pulumi-kafka-connect/provider/pkg/kafkaconnect/config"
 	"github.com/pulumi/pulumi-go-provider/infer"
@@ -11,13 +12,10 @@ import (
 type Connector struct{}
 
 type ConnectorArgs struct {
-	Name   string         `pulumi:"name"`
 	Config map[string]any `pulumi:"config"`
 }
 
 type ConnectorState struct {
-	ConnectorArgs
-
 	Result string `pulumi:"result"`
 }
 
@@ -34,7 +32,7 @@ func (*Connector) Create(ctx context.Context, name string, input ConnectorArgs, 
 
 	request := connectors.CreateConnectorRequest{
 		ConnectorRequest: connectors.ConnectorRequest{
-			Name: input.Name,
+			Name: name,
 		},
 		Config: input.Config,
 	}
@@ -47,4 +45,24 @@ func (*Connector) Create(ctx context.Context, name string, input ConnectorArgs, 
 	state.Result = resp.Message
 
 	return name, state, nil
+}
+
+func (*Connector) Delete(ctx context.Context, name string, state ConnectorState) error {
+	// get the config from the provider
+	config := infer.GetConfig[config.KafkaConnectConfig](ctx)
+
+	client := connectors.NewClient(config.Url)
+
+	request := connectors.ConnectorRequest{
+		Name: name,
+	}
+
+	resp, err := client.DeleteConnector(request, false)
+	if err != nil {
+		return err
+	}
+
+	log.Println(resp)
+
+	return nil
 }

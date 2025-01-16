@@ -15,8 +15,6 @@ import (
 type Connector struct {
 	pulumi.CustomResourceState
 
-	Config pulumi.MapOutput    `pulumi:"config"`
-	Name   pulumi.StringOutput `pulumi:"name"`
 	Result pulumi.StringOutput `pulumi:"result"`
 }
 
@@ -29,9 +27,6 @@ func NewConnector(ctx *pulumi.Context,
 
 	if args.Config == nil {
 		return nil, errors.New("invalid value for required argument 'Config'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Connector
@@ -67,13 +62,11 @@ func (ConnectorState) ElementType() reflect.Type {
 
 type connectorArgs struct {
 	Config map[string]interface{} `pulumi:"config"`
-	Name   string                 `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
 	Config pulumi.MapInput
-	Name   pulumi.StringInput
 }
 
 func (ConnectorArgs) ElementType() reflect.Type {
@@ -111,14 +104,6 @@ func (o ConnectorOutput) ToConnectorOutput() ConnectorOutput {
 
 func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput {
 	return o
-}
-
-func (o ConnectorOutput) Config() pulumi.MapOutput {
-	return o.ApplyT(func(v *Connector) pulumi.MapOutput { return v.Config }).(pulumi.MapOutput)
-}
-
-func (o ConnectorOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o ConnectorOutput) Result() pulumi.StringOutput {

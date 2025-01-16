@@ -6,6 +6,6 @@
 	"dependencies": {
 		"typescript": "^4.0.0",
 		"@pulumi/pulumi": "^3.0.0",
-		"@pulumi/kafkaconnect": "0.0.1-alpha.1736981314+4daab1cf.dirty"
+		"@pulumi/kafkaconnect": "0.0.1-alpha.1736986801+43d28a4c.dirty"
 	}
 }

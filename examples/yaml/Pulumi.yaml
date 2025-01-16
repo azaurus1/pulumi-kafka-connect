@@ -12,12 +12,11 @@ resources:
     properties:
       url: "http://localhost:8083" # Replace with your actual Kafka Connect URL
 
-  myConnector:
+  mirror-heartbeat-connector-yxdw:
     type: kafkaconnect:connector:Connector
     options:
       provider: ${defaultProvider}
     properties:
-      name: "mirror-heartbeat-connector-yxdw"
       config:
         connector.class: "org.apache.kafka.connect.mirror.MirrorHeartbeatConnector"
         source.cluster.alias: "source"
@@ -26,4 +25,4 @@ resources:
 
 outputs:
   output:
-    value: ${myConnector.result}
+    value: ${mirror-heartbeat-connector-yxdw.result}

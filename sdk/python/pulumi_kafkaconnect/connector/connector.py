@@ -14,13 +14,11 @@ __all__ = ['ConnectorArgs', 'Connector']
 @pulumi.input_type
 class ConnectorArgs:
     def __init__(__self__, *,
-                 config: pulumi.Input[Mapping[str, Any]],
-                 name: pulumi.Input[str]):
+                 config: pulumi.Input[Mapping[str, Any]]):
         """
         The set of arguments for constructing a Connector resource.
         """
         pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -31,15 +29,6 @@ class ConnectorArgs:
     def config(self, value: pulumi.Input[Mapping[str, Any]]):
         pulumi.set(self, "config", value)
 
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
 
 class Connector(pulumi.CustomResource):
     @overload
@@ -47,7 +36,6 @@ class Connector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a Connector resource with the given unique name, props, and options.
@@ -78,7 +66,6 @@ class Connector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -91,9 +78,6 @@ class Connector(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
-            __props__.__dict__["name"] = name
             __props__.__dict__["result"] = None
         super(Connector, __self__).__init__(
             'kafkaconnect:connector:Connector',
@@ -117,20 +101,8 @@ class Connector(pulumi.CustomResource):
 
         __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
-        __props__.__dict__["config"] = None
-        __props__.__dict__["name"] = None
         __props__.__dict__["result"] = None
         return Connector(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter
-    def config(self) -> pulumi.Output[Mapping[str, Any]]:
-        return pulumi.get(self, "config")
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter

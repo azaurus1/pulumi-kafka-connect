@@ -12,12 +12,6 @@ namespace Pulumi.Kafkaconnect.Connector
     [KafkaconnectResourceType("kafkaconnect:connector:Connector")]
     public partial class Connector : global::Pulumi.CustomResource
     {
-        [Output("config")]
-        public Output<ImmutableDictionary<string, object>> Config { get; private set; } = null!;
-
-        [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
-
         [Output("result")]
         public Output<string> Result { get; private set; } = null!;
 
@@ -73,9 +67,6 @@ namespace Pulumi.Kafkaconnect.Connector
             get => _config ?? (_config = new InputMap<object>());
             set => _config = value;
         }
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
 
         public ConnectorArgs()
         {

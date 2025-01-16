@@ -10,8 +10,15 @@ return await Deployment.RunAsync(() =>
         Url = "http://localhost:8083",
     });
 
-    var myConnector = new Kafkaconnect.Connector.Connector("myConnector", new()
+    var mirrorHeartbeatConnectorYxdw = new Kafkaconnect.Connector.Connector("mirror-heartbeat-connector-yxdw", new()
     {
+        Config = 
+        {
+            { "connector.class", "org.apache.kafka.connect.mirror.MirrorHeartbeatConnector" },
+            { "source.cluster.alias", "source" },
+            { "heartbeats.topic.replication.factor", "-1" },
+            { "name", "mirror-heartbeat-connector-yxdw" },
+        },
     }, new CustomResourceOptions
     {
         Provider = defaultProvider,
@@ -21,7 +28,7 @@ return await Deployment.RunAsync(() =>
     {
         ["output"] = 
         {
-            { "value", myConnector.Result },
+            { "value", mirrorHeartbeatConnectorYxdw.Result },
         },
     };
 });
