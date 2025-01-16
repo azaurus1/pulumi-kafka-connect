@@ -6,7 +6,7 @@ before:
   hooks:
     - make provider
 builds:
-  - binary: pulumi-resource-pinecone
+  - binary: pulumi-resource-kafkaconnect
     dir: provider
     env:
       - CGO_ENABLED=0
