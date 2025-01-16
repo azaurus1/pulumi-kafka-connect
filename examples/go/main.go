@@ -1,8 +1,8 @@
 package main
 
 import (
-	"example.com/pulumi-kafkaconnect/sdk/go/kafkaconnect"
-	"example.com/pulumi-kafkaconnect/sdk/go/kafkaconnect/connector"
+	"github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect"
+	"github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect/connector"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
