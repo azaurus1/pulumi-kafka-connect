@@ -48,7 +48,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@7ec5c2b0c6cdda6e8bbb49444bc797dd33d74dd8
         with:
           args: -p 3 release --clean
           version: latest
