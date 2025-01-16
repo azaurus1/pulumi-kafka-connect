@@ -22,19 +22,19 @@ builds:
       - -X github.com/azaurus1/pulumi-kafka-connect/provider/Version={{.Tag }}
     main: ./cmd/pulumi-resource-kafkaconnect/
 
-signs:
-  - cmd: cosign
-    env:
-      - COSIGN_EXPERIMENTAL=1
-    certificate: "${artifact}.pem"
-    args:
-      - sign-blob
-      - "-y"
-      - "--output-certificate=${certificate}"
-      - "--bundle=${signature}"
-      - "${artifact}"
-    artifacts: all
-    output: true
+# signs:
+#   - cmd: cosign
+#     env:
+#       - COSIGN_EXPERIMENTAL=1
+#     certificate: "${artifact}.pem"
+#     args:
+#       - sign-blob
+#       - "-y"
+#       - "--output-certificate=${certificate}"
+#       - "--bundle=${signature}"
+#       - "${artifact}"
+#     artifacts: all
+#     output: true
 
 sboms:
   - artifacts: archive
