@@ -61,11 +61,11 @@ jobs:
         with:
           script: |
             github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'refs/tags/sdk/${{ github.ref_name }}',
-              sha: context.sha
-            })
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: `refs/tags/sdk/v${github.ref_name}`,
+            sha: github.sha
+            });
     strategy:
       fail-fast: true
       matrix:
