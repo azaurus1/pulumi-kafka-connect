@@ -13,7 +13,7 @@ This Pulumi provider enables you to manage you [Kafka Connect](https://www.redpa
 
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
-import * as kafkaconnect from "@pulumi/kafkaconnect";
+import * as kafkaconnect from "@azaurus/kafkaconnect";
 
 const defaultProvider = new kafkaconnect.Provider("defaultProvider", {url: "http://localhost:8083"});
 const mirrorHeartbeatConnectorYxdw = new kafkaconnect.connector.Connector("mirror-heartbeat-connector-yxdw", {config: {
@@ -33,7 +33,7 @@ export const output = {
 {{% choosable language python %}}
 ```python
 import pulumi
-import pulumi_kafkaconnect as kafkaconnect
+import pulumi-kafkaconnect as kafkaconnect
 
 default_provider = kafkaconnect.Provider("defaultProvider", url="http://localhost:8083")
 mirror_heartbeat_connector_yxdw = kafkaconnect.connector.Connector("mirror-heartbeat-connector-yxdw", config={
@@ -93,7 +93,7 @@ func main() {
 using System.Collections.Generic;
 using System.Linq;
 using Pulumi;
-using Kafkaconnect = Pulumi.Kafkaconnect;
+using Kafkaconnect = Azaurus1.Kafkaconnect;
 
 return await Deployment.RunAsync(() =>
 {
@@ -131,10 +131,6 @@ return await Deployment.RunAsync(() =>
 ```yaml
 name: provider-kafkaconnect-native
 runtime: yaml
-plugins:
-  providers:
-    - name: kafkaconnect
-      path: ../../bin
 
 resources:
   # Explicitly configure the default provider with the required 'url' property

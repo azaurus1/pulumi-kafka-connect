@@ -17,7 +17,7 @@ def readme():
         return "kafkaconnect Pulumi Package - Development Version"
 
 
-setup(name='pulumi-kafkaconnect',
+setup(name='pulumi_kafkaconnect',
       python_requires='>=3.8',
       version=VERSION,
       description="A Pulumi native provider for Kafka Connect",
@@ -30,7 +30,7 @@ setup(name='pulumi-kafkaconnect',
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'pulumi-kafkaconnect': [
+          'pulumi_kafkaconnect': [
               'py.typed',
               'pulumi-plugin.json',
           ]
