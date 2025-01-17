@@ -75,7 +75,7 @@ func Provider() p.Provider {
 					"requires": map[string]string{
 						"pulumi": ">=3.0.0,<4.0.0",
 					},
-					"packageName": "pulumi-kafkaconnect",
+					"packageName": "pulumi_kafkaconnect",
 				},
 			},
 		},
