@@ -146,9 +146,9 @@ jobs:
         goversion:
         - 1.21.x
         language:
-        - nodejs
-        # - python
-        # - dotnet
+        # - nodejs
+        - python
+        - dotnet
         # - go
         nodeversion:
         - 18.x
