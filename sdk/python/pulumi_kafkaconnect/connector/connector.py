@@ -101,8 +101,14 @@ class Connector(pulumi.CustomResource):
 
         __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
+        __props__.__dict__["config"] = None
         __props__.__dict__["result"] = None
         return Connector(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Output[Mapping[str, Any]]:
+        return pulumi.get(self, "config")
 
     @property
     @pulumi.getter

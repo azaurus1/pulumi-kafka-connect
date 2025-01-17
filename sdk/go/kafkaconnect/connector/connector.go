@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect/internal"
+	"example.com/pulumi-kafkaconnect/sdk/go/kafkaconnect/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 type Connector struct {
 	pulumi.CustomResourceState
 
+	Config pulumi.MapOutput    `pulumi:"config"`
 	Result pulumi.StringOutput `pulumi:"result"`
 }
 
@@ -104,6 +105,10 @@ func (o ConnectorOutput) ToConnectorOutput() ConnectorOutput {
 
 func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput {
 	return o
+}
+
+func (o ConnectorOutput) Config() pulumi.MapOutput {
+	return o.ApplyT(func(v *Connector) pulumi.MapOutput { return v.Config }).(pulumi.MapOutput)
 }
 
 func (o ConnectorOutput) Result() pulumi.StringOutput {

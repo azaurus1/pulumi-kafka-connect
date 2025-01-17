@@ -31,6 +31,7 @@ export class Connector extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connector.__pulumiType;
     }
 
+    public readonly config!: pulumi.Output<{[key: string]: any}>;
     public /*out*/ readonly result!: pulumi.Output<string>;
 
     /**
@@ -50,6 +51,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["result"] = undefined /*out*/;
         } else {
+            resourceInputs["config"] = undefined /*out*/;
             resourceInputs["result"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

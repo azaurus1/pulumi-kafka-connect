@@ -12,10 +12,11 @@ import (
 type Connector struct{}
 
 type ConnectorArgs struct {
-	Config map[string]any `pulumi:"config"`
+	Config map[string]any `pulumi:"config,omitempty"`
 }
 
 type ConnectorState struct {
+	ConnectorArgs
 	Result string `pulumi:"result"`
 }
 
@@ -49,6 +50,27 @@ func (*Connector) Create(ctx context.Context, name string, input ConnectorArgs, 
 	state.Result = resp.Message
 
 	return name, state, nil
+}
+
+func (*Connector) Read(ctx context.Context, name string, state ConnectorState) error {
+	// get the config from the provider
+	config := infer.GetConfig[config.KafkaConnectConfig](ctx)
+
+	client := connectors.NewClient(config.Url)
+
+	request := connectors.ConnectorRequest{
+		Name: name,
+	}
+
+	resp, err := client.GetConnector(request)
+	if err != nil {
+		return err
+	}
+
+	state.Config = resp.Config
+
+	return nil
+
 }
 
 func (*Connector) Delete(ctx context.Context, name string, state ConnectorState) error {

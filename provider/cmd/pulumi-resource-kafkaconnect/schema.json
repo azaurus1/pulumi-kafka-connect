@@ -1,7 +1,7 @@
 {
   "diplayName": "Kafka Connect",
   "description": "A Pulumi native provider for Kafka Connect",
-  "version": "v0.0.0",
+  "version": "v0.0.3",
   "publisher": "azaurus1",
   "license": "Apache-2.0",
   "pluginDownloadURL": "github://api.github.com/azaurus1/pulumi-kafka-connect",
