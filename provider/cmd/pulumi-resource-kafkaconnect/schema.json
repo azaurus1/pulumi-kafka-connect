@@ -12,5 +12,29 @@
     "kafkaconnect",
     "category/utility",
     "kind/native"
-  ]
+  ],
+  "language": {
+    "csharp": {
+      "packageReferences": {
+        "Pulumi": "3.*"
+      },
+      "rootNamespace": "Azaurus1"
+    },
+    "go": {
+      "generateResourceContainerTypes": true,
+      "importBasePath": "github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect"
+    },
+    "nodejs": {
+      "dependencies": {
+        "@pulumi/pulumi": "^3.0.0"
+      },
+      "packageName": "@azaurus/kafkaconnect"
+    },
+    "python": {
+      "packageName": "pulumi-kafkaconnect",
+      "requires": {
+        "pulumi": ">=3.0.0,<4.0.0"
+      }
+    }
+  }
 }

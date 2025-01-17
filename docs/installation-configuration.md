@@ -9,7 +9,46 @@ The Kafka Connect Pulumi provider is available as a package in all Pulumi langua
 - JavaScript/TypeScript: [`@azaurus/kafkaconnect`]("https://www.npmjs.com/package/@azaurus/kafkaconnect")
 - Python: [`pulumi-kafkaconnect`]("https://pypi.org/project/pulumi-kafkaconnect/")
 - Go: [`github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect`]("https://github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect")
-- .NET: [Azaurus1.Kafkaconnect]("https://www.nuget.org/packages/Azaurus1.Kafkaconnect/")
+- .NET: [`Azaurus1.Kafkaconnect`]("https://www.nuget.org/packages/Azaurus1.Kafkaconnect/")
+
+### Node.js (JavaScript/TypeScript)
+
+To use from JavaScript or TypeScript in Node.js, install using either `npm`:
+
+```bash
+npm install @azaurus/kafkaconnect
+```
+
+or `yarn`:
+
+```bash
+yarn add @azaurus/kafkaconnect
+```
+
+### Python
+
+To use from Python, install using `pip`:
+
+```bash
+pip install pulumi-kafkaconnect
+```
+
+### Go
+
+To use from Go, use `go get` to grab the latest version of the library:
+
+```bash
+go get github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect
+```
+
+### .NET
+
+To use from .NET, install using `dotnet add package`:
+
+```bash
+dotnet add package Azaurus1.Kafkaconnect
+```
+
 
 ## Configuration
 The following configuration points are available for the `kafka-connect` provider:
