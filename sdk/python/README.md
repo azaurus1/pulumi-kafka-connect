@@ -2,6 +2,7 @@
 A Pulumi Provider for Kafka Connect, allows for:
 
 - Creating a connector
+- Reading a connector
 - Deleting a connector
 
 <!-- # Pulumi Native Provider Boilerplate

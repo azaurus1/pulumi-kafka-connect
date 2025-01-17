@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/kafkaconnect",
+    "name": "@azaurus/kafkaconnect",
     "version": "${VERSION}",
     "keywords": [
         "pulumi",
@@ -14,7 +14,7 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^3.42.0"
+        "@pulumi/pulumi": "^3.0.0"
     },
     "devDependencies": {
         "@types/node": "^14",

@@ -57,19 +57,19 @@ func Provider() p.Provider {
 			LanguageMap: map[string]any{
 				"go": map[string]any{
 					"generateResourceContainerTypes": true,
-					"importBasePath":                 "github.com/azaurus1/pulumi-kafka-connect/sdk/go/pinecone",
+					"importBasePath":                 "github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect",
 				},
 				"csharp": map[string]any{
 					"packageReferences": map[string]string{
 						"Pulumi": "3.*",
 					},
-					"rootNamespace": "Azaurus",
+					"rootNamespace": "Azaurus1",
 				},
 				"nodejs": map[string]any{
 					"dependencies": map[string]string{
 						"@pulumi/pulumi": "^3.0.0",
 					},
-					"packageName": "@azaurus/pulumi",
+					"packageName": "@azaurus/kafkaconnect",
 				},
 				"python": map[string]any{
 					"requires": map[string]string{

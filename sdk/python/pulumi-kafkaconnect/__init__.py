@@ -9,13 +9,13 @@ from .provider import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_kafkaconnect.config as __config
+    import pulumi-kafkaconnect.config as __config
     config = __config
-    import pulumi_kafkaconnect.connector as __connector
+    import pulumi-kafkaconnect.connector as __connector
     connector = __connector
 else:
-    config = _utilities.lazy_import('pulumi_kafkaconnect.config')
-    connector = _utilities.lazy_import('pulumi_kafkaconnect.connector')
+    config = _utilities.lazy_import('pulumi-kafkaconnect.config')
+    connector = _utilities.lazy_import('pulumi-kafkaconnect.connector')
 
 _utilities.register(
     resource_modules="""
@@ -23,7 +23,7 @@ _utilities.register(
  {
   "pkg": "kafkaconnect",
   "mod": "connector",
-  "fqn": "pulumi_kafkaconnect.connector",
+  "fqn": "pulumi-kafkaconnect.connector",
   "classes": {
    "kafkaconnect:connector:Connector": "Connector"
   }
@@ -35,7 +35,7 @@ _utilities.register(
  {
   "pkg": "kafkaconnect",
   "token": "pulumi:providers:kafkaconnect",
-  "fqn": "pulumi_kafkaconnect",
+  "fqn": "pulumi-kafkaconnect",
   "class": "Provider"
  }
 ]

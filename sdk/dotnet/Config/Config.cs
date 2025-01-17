@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Kafkaconnect
+namespace Azaurus1.Kafkaconnect
 {
     public static class Config
     {

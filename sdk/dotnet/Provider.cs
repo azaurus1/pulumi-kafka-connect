@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Kafkaconnect
+namespace Azaurus1.Kafkaconnect
 {
     [KafkaconnectResourceType("pulumi:providers:kafkaconnect")]
     public partial class Provider : global::Pulumi.ProviderResource
@@ -42,6 +43,7 @@ namespace Pulumi.Kafkaconnect
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/azaurus1/pulumi-kafka-connect",
                 AdditionalSecretOutputs =
                 {
                     "password",
