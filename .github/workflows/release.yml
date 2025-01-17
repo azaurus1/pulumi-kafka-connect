@@ -146,7 +146,7 @@ jobs:
         goversion:
         - 1.21.x
         language:
-        # - nodejs
+        - nodejs
         - python
         - dotnet
         # - go
