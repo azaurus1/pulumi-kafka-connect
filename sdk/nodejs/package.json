@@ -2,11 +2,14 @@
     "name": "@pulumi/kafkaconnect",
     "version": "${VERSION}",
     "keywords": [
+        "pulumi",
         "kafka",
         "kafkaconnect",
-        "connect",
-        "category/cloud"
+        "category/utility",
+        "kind/native"
     ],
+    "repository": "https://github.com/azaurus1/pulumi-kafka-connect",
+    "license": "Apache-2.0",
     "scripts": {
         "build": "tsc"
     },
@@ -19,6 +22,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "kafkaconnect"
+        "name": "kafkaconnect",
+        "server": "github://api.github.com/azaurus1/pulumi-kafka-connect"
     }
 }

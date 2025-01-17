@@ -53,6 +53,7 @@ namespace Pulumi.Kafkaconnect
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/azaurus1/pulumi-kafka-connect";
             return dst;
         }
 

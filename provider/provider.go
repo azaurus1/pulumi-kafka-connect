@@ -44,11 +44,16 @@ func Provider() p.Provider {
 			DisplayName: "Kafka Connect",
 			Description: "A Pulumi native provider for Kafka Connect",
 			Keywords: []string{
+				"pulumi",
 				"kafka",
 				"kafkaconnect",
-				"connect",
-				"category/cloud",
+				"category/utility",
+				"kind/native",
 			},
+			Publisher:         "azaurus1",
+			License:           "Apache-2.0",
+			PluginDownloadURL: "github://api.github.com/azaurus1/pulumi-kafka-connect",
+			Repository:        "https://github.com/azaurus1/pulumi-kafka-connect",
 		},
 	})
 }

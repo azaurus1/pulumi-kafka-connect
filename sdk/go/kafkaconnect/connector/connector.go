@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"example.com/pulumi-kafkaconnect/sdk/go/kafkaconnect/internal"
+	"github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 

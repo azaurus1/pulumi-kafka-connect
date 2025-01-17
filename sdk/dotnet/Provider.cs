@@ -42,6 +42,7 @@ namespace Pulumi.Kafkaconnect
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/azaurus1/pulumi-kafka-connect",
                 AdditionalSecretOutputs =
                 {
                     "password",

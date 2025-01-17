@@ -23,7 +23,11 @@ setup(name='pulumi_kafkaconnect',
       description="A Pulumi native provider for Kafka Connect",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='kafka kafkaconnect connect category/cloud',
+      keywords='pulumi kafka kafkaconnect category/utility kind/native',
+      project_urls={
+          'Repository': 'https://github.com/azaurus1/pulumi-kafka-connect'
+      },
+      license='Apache-2.0',
       packages=find_packages(),
       package_data={
           'pulumi_kafkaconnect': [
