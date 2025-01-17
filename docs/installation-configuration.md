@@ -6,10 +6,10 @@ layout: package
 
 ## Installation
 The Kafka Connect Pulumi provider is available as a package in all Pulumi languages:
-- JavaScript/TypeScript: [`azaurus/pulumi-kafka-connect`]
-- Python: [`kafka_connect_pulumi`]
-- Go: [`github.com/azaurus1/pulumi-kafka-connect/sdk/go/port`]
-- .NET: []
+- JavaScript/TypeScript: [`@azaurus/kafkaconnect`]
+- Python: [`pulumi-kafkaconnect`]
+- Go: [`github.com/azaurus1/pulumi-kafka-connect/sdk/go/kafkaconnect`]
+- .NET: [Azaurus1.Kafkaconnect]
 
 ## Configuration
 The following configuration points are available for the `kafka-connect` provider:
