@@ -54,6 +54,30 @@ func Provider() p.Provider {
 			License:           "Apache-2.0",
 			PluginDownloadURL: "github://api.github.com/azaurus1/pulumi-kafka-connect",
 			Repository:        "https://github.com/azaurus1/pulumi-kafka-connect",
+			LanguageMap: map[string]any{
+				"go": map[string]any{
+					"generateResourceContainerTypes": true,
+					"importBasePath":                 "github.com/azaurus1/pulumi-kafka-connect/sdk/go/pinecone",
+				},
+				"csharp": map[string]any{
+					"packageReferences": map[string]string{
+						"Pulumi": "3.*",
+					},
+					"rootNamespace": "Azaurus",
+				},
+				"nodejs": map[string]any{
+					"dependencies": map[string]string{
+						"@pulumi/pulumi": "^3.0.0",
+					},
+					"packageName": "@azaurus/pulumi",
+				},
+				"python": map[string]any{
+					"requires": map[string]string{
+						"pulumi": ">=3.0.0,<4.0.0",
+					},
+					"packageName": "pulumi-kafkaconnect",
+				},
+			},
 		},
 	})
 }

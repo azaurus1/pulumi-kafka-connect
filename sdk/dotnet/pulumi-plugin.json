@@ -1,5 +1,4 @@
 {
   "resource": true,
-  "name": "kafkaconnect",
-  "server": "github://api.github.com/azaurus1/pulumi-kafka-connect"
+  "name": "kafkaconnect"
 }
