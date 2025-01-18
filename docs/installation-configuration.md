@@ -49,7 +49,24 @@ To use from .NET, install using `dotnet add package`:
 dotnet add package Azaurus1.Kafkaconnect
 ```
 
-
 ## Configuration
 The following configuration points are available for the `kafka-connect` provider:
 - `kafkaconnect:url` - This is the URL of the Connect cluster (Env: `KAFKA_CONNECT_URL`)
+
+### Configuring the Provider
+
+#### Using `pulumi config set`
+You can configure the provider using Pulumi's `config set` command. For example:
+
+```bash
+pulumi config set kafkaconnect:url https://my-kafka-connect-cluster:8083
+```
+
+#### Using Environment Variables
+You can also configure the provider by setting environment variables before running your Pulumi program. For example:
+
+```bash
+export KAFKA_CONNECT_URL=https://my-kafka-connect-cluster:8083
+```
+
+If both `pulumi config` and environment variables are set, the environment variable will take precedence.
