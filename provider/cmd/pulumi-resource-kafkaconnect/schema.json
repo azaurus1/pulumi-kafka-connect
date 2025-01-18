@@ -6,6 +6,7 @@
   "license": "Apache-2.0",
   "pluginDownloadURL": "github://api.github.com/azaurus1/pulumi-kafka-connect",
   "repository": "https://github.com/azaurus1/pulumi-kafka-connect",
+  "logoUrl": "https://raw.githubusercontent.com/azaurus1/pulumi-kafka-connect/refs/heads/main/.github/images/kafka-logo.png",
   "keywords": [
     "pulumi",
     "kafka",
