@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Pulumi;
-using Kafkaconnect = Pulumi.Kafkaconnect;
+using Kafkaconnect = Azaurus1.Kafkaconnect;
 
 return await Deployment.RunAsync(() => 
 {

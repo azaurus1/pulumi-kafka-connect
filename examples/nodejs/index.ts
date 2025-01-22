@@ -1,5 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
-import * as kafkaconnect from "@pulumi/kafkaconnect";
+import * as kafkaconnect from "@azaurus/kafkaconnect";
 
 const defaultProvider = new kafkaconnect.Provider("defaultProvider", {url: "http://localhost:8083"});
 const mirrorHeartbeatConnectorYxdw = new kafkaconnect.connector.Connector("mirror-heartbeat-connector-yxdw", {config: {

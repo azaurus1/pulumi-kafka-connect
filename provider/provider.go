@@ -78,6 +78,7 @@ func Provider() p.Provider {
 					"packageName": "pulumi_kafkaconnect",
 				},
 			},
+			LogoURL: "https://raw.githubusercontent.com/azaurus1/pulumi-kafka-connect/refs/heads/main/.github/images/kafka-logo.png",
 		},
 	})
 }
