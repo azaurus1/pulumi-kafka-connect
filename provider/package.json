@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "@azaurus/kafkaconnect": "^0.0.7"
-  }
-}
