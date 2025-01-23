@@ -1,12 +1,8 @@
 {
-  "diplayName": "Kafka Connect",
+  "name": "kafka-connect",
+  "displayName": "Kafka Connect",
+  "version": "0.0.8+dirty",
   "description": "A Pulumi native provider for Kafka Connect",
-  "version": "v0.0.3",
-  "publisher": "azaurus1",
-  "license": "Apache-2.0",
-  "pluginDownloadURL": "github://api.github.com/azaurus1/pulumi-kafka-connect",
-  "repository": "https://github.com/azaurus1/pulumi-kafka-connect",
-  "logoUrl": "https://raw.githubusercontent.com/azaurus1/pulumi-kafka-connect/refs/heads/main/.github/images/kafka-logo.png",
   "keywords": [
     "pulumi",
     "kafka",
@@ -14,6 +10,14 @@
     "category/utility",
     "kind/native"
   ],
+  "license": "Apache-2.0",
+  "repository": "https://github.com/azaurus1/pulumi-kafka-connect",
+  "logoUrl": "https://raw.githubusercontent.com/azaurus1/pulumi-kafka-connect/refs/heads/main/.github/images/kafka-logo.png",
+  "pluginDownloadURL": "github://api.github.com/azaurus1/pulumi-kafka-connect",
+  "publisher": "azaurus1",
+  "meta": {
+    "moduleFormat": "(.*)"
+  },
   "language": {
     "csharp": {
       "packageReferences": {
@@ -32,10 +36,97 @@
       "packageName": "@azaurus/kafkaconnect"
     },
     "python": {
-      "packageName": "pulumi-kafkaconnect",
+      "packageName": "pulumi_kafkaconnect",
       "requires": {
-        "pulumi": ">=3.0.0,<4.0.0"
+        "pulumi": "\u003e=3.0.0,\u003c4.0.0"
       }
+    }
+  },
+  "config": {
+    "variables": {
+      "password": {
+        "type": "string",
+        "secret": true
+      },
+      "url": {
+        "type": "string",
+        "description": "The url for the kafka connect cluster"
+      },
+      "user": {
+        "type": "string",
+        "secret": true
+      }
+    },
+    "defaults": [
+      "url"
+    ]
+  },
+  "provider": {
+    "properties": {
+      "password": {
+        "type": "string",
+        "secret": true
+      },
+      "url": {
+        "type": "string",
+        "description": "The url for the kafka connect cluster"
+      },
+      "user": {
+        "type": "string",
+        "secret": true
+      }
+    },
+    "type": "object",
+    "required": [
+      "url"
+    ],
+    "inputProperties": {
+      "password": {
+        "type": "string",
+        "secret": true
+      },
+      "url": {
+        "type": "string",
+        "description": "The url for the kafka connect cluster"
+      },
+      "user": {
+        "type": "string",
+        "secret": true
+      }
+    },
+    "requiredInputs": [
+      "url"
+    ]
+  },
+  "resources": {
+    "kafka-connect:connector:Connector": {
+      "properties": {
+        "config": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "result": {
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "required": [
+        "config",
+        "result"
+      ],
+      "inputProperties": {
+        "config": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "pulumi.json#/Any"
+          }
+        }
+      },
+      "requiredInputs": [
+        "config"
+      ]
     }
   }
 }
