@@ -12,13 +12,13 @@ import (
 var _ = internal.GetEnvOrDefault
 
 func GetPassword(ctx *pulumi.Context) string {
-	return config.Get(ctx, "kafkaconnect:password")
+	return config.Get(ctx, "kafka-connect:password")
 }
 
 // The url for the kafka connect cluster
 func GetUrl(ctx *pulumi.Context) string {
-	return config.Get(ctx, "kafkaconnect:url")
+	return config.Get(ctx, "kafka-connect:url")
 }
 func GetUser(ctx *pulumi.Context) string {
-	return config.Get(ctx, "kafkaconnect:user")
+	return config.Get(ctx, "kafka-connect:user")
 }

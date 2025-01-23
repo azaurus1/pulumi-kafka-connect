@@ -21,11 +21,11 @@ _utilities.register(
     resource_modules="""
 [
  {
-  "pkg": "kafkaconnect",
+  "pkg": "kafka-connect",
   "mod": "connector",
   "fqn": "pulumi_kafkaconnect.connector",
   "classes": {
-   "kafkaconnect:connector:Connector": "Connector"
+   "kafka-connect:connector:Connector": "Connector"
   }
  }
 ]
@@ -33,8 +33,8 @@ _utilities.register(
     resource_packages="""
 [
  {
-  "pkg": "kafkaconnect",
-  "token": "pulumi:providers:kafkaconnect",
+  "pkg": "kafka-connect",
+  "token": "pulumi:providers:kafka-connect",
   "fqn": "pulumi_kafkaconnect",
   "class": "Provider"
  }

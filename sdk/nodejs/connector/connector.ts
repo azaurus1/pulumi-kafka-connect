@@ -18,7 +18,7 @@ export class Connector extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'kafkaconnect:connector:Connector';
+    public static readonly __pulumiType = 'kafka-connect:connector:Connector';
 
     /**
      * Returns true if the given object is an instance of Connector.  This is designed to work even

@@ -31,7 +31,7 @@ func NewConnector(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Connector
-	err := ctx.RegisterResource("kafkaconnect:connector:Connector", name, args, &resource, opts...)
+	err := ctx.RegisterResource("kafka-connect:connector:Connector", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func NewConnector(ctx *pulumi.Context,
 func GetConnector(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ConnectorState, opts ...pulumi.ResourceOption) (*Connector, error) {
 	var resource Connector
-	err := ctx.ReadResource("kafkaconnect:connector:Connector", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("kafka-connect:connector:Connector", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

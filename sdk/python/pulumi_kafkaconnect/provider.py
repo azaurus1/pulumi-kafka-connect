@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -68,7 +73,7 @@ class Provider(pulumi.ProviderResource):
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Kafkaconnect resource with the given unique name, props, and options.
+        Create a Kafka-connect resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] url: The url for the kafka connect cluster
@@ -80,7 +85,7 @@ class Provider(pulumi.ProviderResource):
                  args: ProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Kafkaconnect resource with the given unique name, props, and options.
+        Create a Kafka-connect resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -116,7 +121,7 @@ class Provider(pulumi.ProviderResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "user"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
-            'kafkaconnect',
+            'kafka-connect',
             resource_name,
             __props__,
             opts)

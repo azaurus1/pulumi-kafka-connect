@@ -14,11 +14,11 @@ def readme():
         with open('README.md', encoding='utf-8') as f:
             return f.read()
     except FileNotFoundError:
-        return "kafkaconnect Pulumi Package - Development Version"
+        return "kafka-connect Pulumi Package - Development Version"
 
 
 setup(name='pulumi_kafkaconnect',
-      python_requires='>=3.8',
+      python_requires='>=3.9',
       version=VERSION,
       description="A Pulumi native provider for Kafka Connect",
       long_description=readme(),
@@ -38,6 +38,7 @@ setup(name='pulumi_kafkaconnect',
       install_requires=[
           'parver>=0.2.1',
           'pulumi>=3.0.0,<4.0.0',
-          'semver>=2.8.1'
+          'semver>=2.8.1',
+          'typing-extensions>=4.11,<5; python_version < "3.11"'
       ],
       zip_safe=False)

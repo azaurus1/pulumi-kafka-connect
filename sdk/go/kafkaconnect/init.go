@@ -20,7 +20,7 @@ func (p *pkg) Version() semver.Version {
 }
 
 func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pulumi.ProviderResource, error) {
-	if typ != "pulumi:providers:kafkaconnect" {
+	if typ != "pulumi:providers:kafka-connect" {
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
@@ -35,7 +35,7 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourcePackage(
-		"kafkaconnect",
+		"kafka-connect",
 		&pkg{version},
 	)
 }
