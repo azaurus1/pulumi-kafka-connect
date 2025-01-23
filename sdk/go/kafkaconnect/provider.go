@@ -44,7 +44,7 @@ func NewProvider(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
-	err := ctx.RegisterResource("pulumi:providers:kafkaconnect", name, args, &resource, opts...)
+	err := ctx.RegisterResource("pulumi:providers:kafka-connect", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

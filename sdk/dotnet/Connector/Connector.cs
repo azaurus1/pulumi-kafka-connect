@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Azaurus1.Kafkaconnect.Connector
+namespace Azaurus1.KafkaConnect.Connector
 {
-    [KafkaconnectResourceType("kafkaconnect:connector:Connector")]
+    [KafkaConnectResourceType("kafka-connect:connector:Connector")]
     public partial class Connector : global::Pulumi.CustomResource
     {
         [Output("config")]
@@ -28,12 +28,12 @@ namespace Azaurus1.Kafkaconnect.Connector
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Connector(string name, ConnectorArgs args, CustomResourceOptions? options = null)
-            : base("kafkaconnect:connector:Connector", name, args ?? new ConnectorArgs(), MakeResourceOptions(options, ""))
+            : base("kafka-connect:connector:Connector", name, args ?? new ConnectorArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Connector(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("kafkaconnect:connector:Connector", name, null, MakeResourceOptions(options, id))
+            : base("kafka-connect:connector:Connector", name, null, MakeResourceOptions(options, id))
         {
         }
 

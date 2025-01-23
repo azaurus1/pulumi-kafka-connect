@@ -4,14 +4,19 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 import types
 
-__config__ = pulumi.Config('kafkaconnect')
+__config__ = pulumi.Config('kafka-connect')
 
 
 class _ExportableConfig(types.ModuleType):

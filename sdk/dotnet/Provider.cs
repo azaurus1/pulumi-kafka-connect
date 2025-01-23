@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Azaurus1.Kafkaconnect
+namespace Azaurus1.KafkaConnect
 {
-    [KafkaconnectResourceType("pulumi:providers:kafkaconnect")]
+    [KafkaConnectResourceType("pulumi:providers:kafka-connect")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
         [Output("password")]
@@ -34,7 +34,7 @@ namespace Azaurus1.Kafkaconnect
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
-            : base("kafkaconnect", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
+            : base("kafka-connect", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
 

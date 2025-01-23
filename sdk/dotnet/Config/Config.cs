@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Azaurus1.Kafkaconnect
+namespace Azaurus1.KafkaConnect
 {
     public static class Config
     {
@@ -30,7 +30,7 @@ namespace Azaurus1.Kafkaconnect
             }
         }
 
-        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("kafkaconnect");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("kafka-connect");
 
         private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));
         public static string? Password

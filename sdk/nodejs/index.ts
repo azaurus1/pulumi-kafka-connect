@@ -19,10 +19,10 @@ export {
     config,
     connector,
 };
-pulumi.runtime.registerResourcePackage("kafkaconnect", {
+pulumi.runtime.registerResourcePackage("kafka-connect", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
-        if (type !== "pulumi:providers:kafkaconnect") {
+        if (type !== "pulumi:providers:kafka-connect") {
             throw new Error(`unknown provider type ${type}`);
         }
         return new Provider(name, <any>undefined, { urn });
