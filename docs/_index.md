@@ -156,4 +156,4 @@ outputs:
 ```
 {{% /choosable %}}
 
-{{< /chooser >}
+{{< /chooser >}}
