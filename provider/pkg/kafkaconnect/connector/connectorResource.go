@@ -4,9 +4,9 @@ import (
 	"context"
 
 	"github.com/azaurus1/pulumi-kafka-connect/provider/pkg/kafkaconnect/config"
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"github.com/ricardo-ch/go-kafka-connect/lib/connectors"
+	// p "github.com/pulumi/pulumi-go-provider"
 )
 
 type Connector struct{}
@@ -44,7 +44,7 @@ func (*Connector) Create(ctx context.Context, req infer.CreateRequest[ConnectorA
 	if err != nil {
 		return infer.CreateResponse[ConnectorState]{}, err
 	}
-	p.GetLogger(ctx).Infof("Create connector %s, got config %v", req.Name, resp.Config)
+	// p.GetLogger(ctx).Infof("Create connector %s, got config %v", req.Name, resp.Config)
 
 	return infer.CreateResponse[ConnectorState]{
 		ID: req.Name,
@@ -82,7 +82,7 @@ func (c *Connector) Read(ctx context.Context, req infer.ReadRequest[ConnectorArg
 	if err != nil {
 		return infer.ReadResponse[ConnectorArgs, ConnectorState]{}, err
 	}
-	p.GetLogger(ctx).Infof("Read connector %s, got config %v", req.ID, resp.Config)
+	// p.GetLogger(ctx).Infof("Read connector %s, got config %v", req.ID, resp.Config)
 
 	return infer.ReadResponse[ConnectorArgs, ConnectorState]{
 		ID: req.ID,
