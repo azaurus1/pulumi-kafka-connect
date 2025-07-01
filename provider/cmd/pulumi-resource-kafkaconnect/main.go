@@ -15,10 +15,14 @@
 package main
 
 import (
+	"context"
+
 	p "github.com/pulumi/pulumi-go-provider"
 
 	kafkaconnect "github.com/azaurus1/pulumi-kafka-connect/provider"
 )
 
 // Serve the provider against Pulumi's Provider protocol.
-func main() { p.RunProvider(kafkaconnect.Name, kafkaconnect.Version, kafkaconnect.Provider()) }
+func main() {
+	p.RunProvider(context.Background(), kafkaconnect.Name, kafkaconnect.Version, kafkaconnect.Provider())
+}
