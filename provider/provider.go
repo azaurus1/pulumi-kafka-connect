@@ -33,10 +33,10 @@ func Provider() p.Provider {
 	// In this case, a single resource and component
 	return infer.Provider(infer.Options{
 		Resources: []infer.InferredResource{
-			infer.Resource[*connector.Connector, connector.ConnectorArgs, connector.ConnectorState](),
+			infer.Resource(&connector.Connector{}),
 		},
 		Components: []infer.InferredComponent{},
-		Config:     infer.Config[*config.KafkaConnectConfig](),
+		Config:     infer.Config(&config.KafkaConnectConfig{}),
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"provider": "index",
 		},
