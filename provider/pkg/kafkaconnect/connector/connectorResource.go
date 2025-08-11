@@ -33,6 +33,9 @@ func getClient(ctx context.Context) connectors.HighLevelClient {
 }
 
 func (*Connector) Create(ctx context.Context, req infer.CreateRequest[ConnectorArgs]) (infer.CreateResponse[ConnectorState], error) {
+	if req.DryRun {
+		return infer.CreateResponse[ConnectorState]{ID: req.Name, Output: ConnectorState{Config: req.Inputs.Config}}, nil
+	}
 	client := getClient(ctx)
 
 	resp, err := client.CreateConnector(connectors.CreateConnectorRequest{
@@ -56,6 +59,9 @@ func (*Connector) Create(ctx context.Context, req infer.CreateRequest[ConnectorA
 }
 
 func (c *Connector) Update(ctx context.Context, req infer.UpdateRequest[ConnectorArgs, ConnectorState]) (infer.UpdateResponse[ConnectorState], error) {
+	if req.DryRun {
+		return infer.UpdateResponse[ConnectorState]{Output: ConnectorState{Config: req.Inputs.Config}}, nil
+	}
 	client := getClient(ctx)
 	resp, err := client.UpdateConnector(connectors.CreateConnectorRequest{
 		ConnectorRequest: connectors.ConnectorRequest{
