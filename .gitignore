@@ -5,9 +5,12 @@
 **/.vs
 **/.idea
 **/.ionide
+**/__debug*
 .pulumi
 Pulumi.*.yaml
 yarn.lock
 ci-scripts
 /nuget/
 provider/**/schema-embed.json
+.direnv/
+.vscode/

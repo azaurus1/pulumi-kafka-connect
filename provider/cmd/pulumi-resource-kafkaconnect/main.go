@@ -16,6 +16,8 @@ package main
 
 import (
 	"context"
+	"fmt"
+	"os"
 
 	p "github.com/pulumi/pulumi-go-provider"
 
@@ -24,5 +26,9 @@ import (
 
 // Serve the provider against Pulumi's Provider protocol.
 func main() {
-	p.RunProvider(context.Background(), kafkaconnect.Name, kafkaconnect.Version, kafkaconnect.Provider())
+	err := p.RunProvider(context.Background(), kafkaconnect.Name, kafkaconnect.Version, kafkaconnect.Provider())
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error: %s", err.Error())
+		os.Exit(1)
+	}
 }
